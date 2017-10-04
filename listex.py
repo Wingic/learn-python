@@ -67,7 +67,7 @@ def has_duplicates(t):
             return False
     return True
 
-#------------------Exercise 8 --- START
+#------------------Exercise 8:
 
 def initialization_bd(bd, t):
     x = 0
@@ -98,4 +98,71 @@ def bd_paradox(t):
         n += 1
     print(x)
 
-#------------------Exercise 8 --- END
+#------------------Exercise 9:
+def creat_wlist():
+    fin = open('g:\py\words.txt')
+
+    wordlist = []
+
+    for line in fin:
+        wordlist.append(line.strip())
+
+    return wordlist
+    #    wordlist = wordlist + [line.strip()]
+
+#------------------Exercise 10:
+"""
+def in_bisect(w):
+    quot = 0
+    rem = 0
+    startp = 0
+    endp = 0
+    n = 0 #debug
+    sect = len(wordlist)
+
+    print(len(wordlist))
+
+    while quot != 1:
+        quot, rem = divmod(sect, 2)
+        endp = endp + quot + rem
+        sect = sect - quot - rem
+        exit = 0
+        n = n + 1 #debug
+        print(startp, endp, sect, n) #debug
+    #    search_list = wordlist[startp:endp]
+        if w <= wordlist[endp]:
+            for x in range(startp,endp):
+                print(x) #debug
+                if w == wordlist[x]:
+                    print(wordlist[x])
+                    print(x)
+                    exit = 1
+                    break
+        if exit == 1:
+            break
+        startp = endp
+    return False
+
+in_bisect('ice')
+"""
+
+word_list = creat_wlist()
+
+def in_bisect(word, word_list):
+
+    i = len(word_list) // 2
+
+    if i == 0:
+        return False
+
+    if word == word_list[i]:
+        return True
+
+    if word < word_list[i]:
+        return in_bisect(word,word_list[:i])
+
+    if word > word_list[i]:
+        return in_bisect(word,word_list[i+1:])
+    
+for word in ['aa', 'alien', 'allen', 'zymurgy']:
+        print(word, 'in list', in_bisect(word_list, word))
